@@ -11,7 +11,7 @@ namespace 有夠難作業.Controllers
         // GET: GameController
         public ActionResult Index()
         {
-            return View();
+            return View(_Game);
         }
 
         // GET: GameController/Details/5
@@ -33,6 +33,7 @@ namespace 有夠難作業.Controllers
         {
             try
             {
+                _Game.Add(collection);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -50,7 +51,7 @@ namespace 有夠難作業.Controllers
         // POST: GameController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Game collection)
+        public ActionResult Edit(int id, IFormCollection collection)
         {
             try
             {
@@ -71,7 +72,7 @@ namespace 有夠難作業.Controllers
         // POST: GameController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, Game collection)
+        public ActionResult Delete(int id, IFormCollection collection)
         {
             try
             {
